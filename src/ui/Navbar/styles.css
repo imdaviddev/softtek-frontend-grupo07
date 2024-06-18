@@ -1,0 +1,127 @@
+.navbar, .navbar .toggle-menu {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    background-color: #010101;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height: 5rem;
+}
+
+.navbar .toggle-menu{
+    flex:1;
+}
+
+.navbar .logo {
+    font-weight: bold;
+    font-size: 24px;
+    letter-spacing: 1px;
+    border-bottom: solid 1px white;
+}
+
+.navbar .toggle-menu .items {
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    gap: 10px;
+}
+
+.navbar .toggle-menu .items .item{
+    padding: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: solid transparent 1px;
+}
+
+.navbar .toggle-menu .items .item:hover {
+    border-color: #f1f1f1;
+    font-weight: bold
+}
+
+.navbar .toggle-menu .login{
+    background: #194bb1;
+    color: white;
+    padding: 1rem;
+    border-radius: 5px;
+    border: solid white 1px;
+    cursor: pointer;
+}
+
+.navbar .toggle-menu .login:hover{
+    background-color: #102f6d;;
+}
+
+
+.toggle-menu-btn {
+    display: none;
+}
+
+.toggle-menu-btn div{
+    width: 2.5rem;
+    height: 0.2rem;
+    background-color: white;
+    margin: 7px;
+    border-radius: 4px;
+}
+
+
+@media screen and (max-width: 600px) {
+    .toggle-menu-btn {
+        display: block;
+        cursor: pointer;
+        z-index: 3;
+        transition: transform 0.3s ease; 
+    }
+    
+    .toggle-menu-btn div {
+        width: 2.5rem;
+        height: 0.2rem;
+        background-color: white;
+        margin: 7px;
+        border-radius: 4px;
+        transition: all 0.5s ease-in-out; 
+    }
+    
+    .toggle-menu-btn.cerrar {
+        transform: rotate(45deg);
+    }
+    
+    .toggle-menu-btn.cerrar div:nth-child(1) {
+        transform: rotate(90deg) translate(10px, 5px);
+    }
+    
+    .toggle-menu-btn.cerrar div:nth-child(2) {
+        transform: rotate(-180deg) translate(5px,0px);
+    }
+
+    .toggle-menu-btn.cerrar div:nth-child(3){
+        display: none;
+    }
+    
+    .navbar .toggle-menu.oculto {
+        display: none;
+    }
+
+    .navbar .toggle-menu.visible {
+        position: absolute;
+        top: 5rem; 
+        right: 0;
+        height: calc(100vh - 5rem); 
+        width: 100%;
+        background-color: #010101;
+        z-index: 2;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .navbar .toggle-menu.visible .items {
+        flex: 0;
+        flex-direction: column;
+        gap: 24px;
+    }
+}
