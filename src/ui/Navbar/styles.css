@@ -34,6 +34,7 @@
     cursor: pointer;
     border-radius: 5px;
     border: solid transparent 1px;
+    color: #f1f1f1;
 }
 
 .navbar .toggle-menu .items .item:hover {

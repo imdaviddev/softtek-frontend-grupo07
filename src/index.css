@@ -3,9 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
-a{
+a, a:active, a:visited, a:focus {
   text-decoration: none;
+  outline: none;
 }
+
 ul{
   list-style: none;
 }
@@ -25,5 +27,21 @@ ul{
   font-weight: 500;
 }
 
+main {
+  flex: 1;
+}
 
-
+.not-found{
+  color: #010101;
+  display: flex;
+  position: absolute;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  background-image: linear-gradient(30deg, #020514, 50%, #7f84aa,80%, #152ba8, #010101)
+}

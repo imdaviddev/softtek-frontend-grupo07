@@ -1,0 +1,10 @@
+footer{
+    min-height: 2rem;
+    background-color: #010101;
+    color: #f1f1f1;
+    font-size: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
