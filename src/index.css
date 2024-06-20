@@ -29,6 +29,13 @@ ul{
 
 main {
   flex: 1;
+
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  min-height: 300px;
 }
 
 .not-found{
@@ -44,4 +51,10 @@ main {
   flex-direction: column;
   text-align: center;
   background-image: linear-gradient(30deg, #020514, 50%, #7f84aa,80%, #152ba8, #010101)
+}
+
+@media screen and (max-width: 600px){
+  main {
+    min-height: 100vh;
+  }
 }
