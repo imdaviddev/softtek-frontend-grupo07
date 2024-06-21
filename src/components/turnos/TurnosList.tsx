@@ -23,16 +23,32 @@ const TurnosList = () => {
   const [turnos, setTurnos] = useState<Turno[]>([]);
 
   useEffect(() => {
-    const fetchTurnos = async () => {
+    const loginAndFetchTurnos = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/turnos');
-        setTurnos(response.data);
+        // Realizar la solicitud de inicio de sesión
+        const loginResponse = await axios.get('http://localhost:8080/login', {
+          params: {
+            login: 'prueba@gmail.com', // Reemplaza con el correo del usuario
+            password: '123' // Reemplaza con la contraseña del usuario
+          }
+        });
+        const token = loginResponse.data.token;
+
+        // Realizar la solicitud de turnos utilizando el token JWT obtenido
+        const turnosResponse = await axios.get('http://localhost:8080/pacientes/mis/turnos', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+
+        // Establecer los turnos en el estado del componente
+        setTurnos(turnosResponse.data);
       } catch (error) {
         console.error('Error al obtener los datos de los turnos:', error);
       }
     };
 
-    fetchTurnos();
+    loginAndFetchTurnos();
   }, []);
 
   if (turnos.length === 0) {
