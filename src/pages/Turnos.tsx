@@ -1,9 +1,11 @@
-import React from 'react'
+import TurnosContainer from '../components/turnos/TurnosContainer'
+import TurnosAdd from '../components/turnos/TurnosAdd'
 
 const Turnos = () => {
   return (
     <main>
-      Pagina con los turnos
+      <TurnosContainer/>
+      <TurnosAdd/>
     </main>
   )
 }
