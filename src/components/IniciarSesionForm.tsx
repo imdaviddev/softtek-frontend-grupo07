@@ -12,6 +12,7 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import AuthService from '../services/auth'
 
 import Imagen from '../assets/background.jpg'
 
@@ -32,13 +33,18 @@ function Copyright(props: any) {
 const defaultTheme = createTheme();
 
 export default function IniciarSesionForm() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const email = data.get('email') as string;
+    const password = data.get('password') as string;
+
+    try {
+      const response = await AuthService.login(email, password);
+      console.log('Logged in successfully:', response);
+    } catch (error) {
+      console.error('Error al iniciar sesión:', error);
+    }
   };
 
   return (
@@ -72,7 +78,7 @@ export default function IniciarSesionForm() {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-               Iniciar Sesion
+              Iniciar Sesion
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <TextField
