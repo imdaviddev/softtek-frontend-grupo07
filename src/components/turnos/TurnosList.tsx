@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import AccessTimeRoundedIcon from '@mui/icons-material/AccessTimeRounded';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import EditNoteRoundedIcon from '@mui/icons-material/EditNoteRounded';
@@ -10,6 +8,8 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 interface Turno {
   nombrePaciente: string;
