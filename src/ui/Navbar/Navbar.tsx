@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './styles.css';
 import { NavLink } from 'react-router-dom';
-import { PAGINA_INICIAR_SESION, PAGINA_INICIO, PAGINA_TURNOS } from '../../routes/routes';
+import { PAGINA_CARTILLA_ESPECIALISTAS, PAGINA_INICIAR_SESION, PAGINA_INICIO, PAGINA_TURNOS } from '../../routes/routes';
 
 const Navbar: React.FC = () => {
     const [toggleMenu, setToggleMenu] = useState(false);
@@ -18,11 +18,20 @@ const Navbar: React.FC = () => {
 
             <div className={`toggle-menu ${toggleMenu ? "visible" : "oculto"}`}>
                 <div className="items">
-                    <NavLink to={PAGINA_INICIO} className="item">
+                    <NavLink to={PAGINA_INICIO} className={({ isActive}) =>
+                        isActive ? "item active" : "item"
+                    }>
                         Inicio
                     </NavLink>
-                    <NavLink to={PAGINA_TURNOS} className="item">
+                    <NavLink to={PAGINA_TURNOS} className={({ isActive}) =>
+                        isActive ? "item active" : "item"
+                    }>
                         Turnos
+                    </NavLink>
+                    <NavLink to={PAGINA_CARTILLA_ESPECIALISTAS} className={({ isActive}) =>
+                        isActive ? "item active" : "item"
+                    }>
+                        Cartilla
                     </NavLink>
                 </div>
 

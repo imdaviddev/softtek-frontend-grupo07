@@ -37,6 +37,13 @@
     color: #f1f1f1;
 }
 
+.navbar .toggle-menu .items .item.active{
+    color: #f1f1f1;
+    background-color: #1690a0;
+    border-color: #f1f1f1;
+    font-weight: bold
+}
+
 .navbar .toggle-menu .items .item:hover {
     border-color: #f1f1f1;
     font-weight: bold
