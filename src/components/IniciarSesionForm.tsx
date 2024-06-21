@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -13,6 +14,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AuthService from '../services/auth'
+import { useNavigate } from 'react-router-dom';
 
 import Imagen from '../assets/background.jpg'
 
@@ -33,6 +35,8 @@ function Copyright(props: any) {
 const defaultTheme = createTheme();
 
 export default function IniciarSesionForm() {
+  const [loginError, setLoginError] = useState<string | null>(null);
+  const navigate = useNavigate();
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -41,9 +45,10 @@ export default function IniciarSesionForm() {
 
     try {
       const response = await AuthService.login(email, password);
-      console.log('Logged in successfully:', response);
+      setLoginError(null);
+      navigate('/');
     } catch (error) {
-      console.error('Error al iniciar sesión:', error);
+      setLoginError('Credenciales incorrectas. Por favor, verifica tu email y contraseña.');
     }
   };
 
@@ -103,8 +108,13 @@ export default function IniciarSesionForm() {
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
-                label="Recuerdame"
+                label="Recuérdame"
               />
+              {loginError && (
+                <Typography variant="body2" color="error" align="center" sx={{ mb: 2 }}>
+                  {loginError}
+                </Typography>
+              )}
               <Button
                 type="submit"
                 fullWidth
