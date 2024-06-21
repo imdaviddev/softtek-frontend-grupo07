@@ -13,6 +13,7 @@ import TurnosList from "../turnos/TurnosList";
 
 export default function TurnosCards() {
   const [pacienteInfo, setPacienteInfo] = useState(null);
+  const [especialistaInfo, setEspecialistaInfo] = useState(null);
 
   useEffect(() => {
     const fetchPacienteInfo = async () => {
@@ -27,6 +28,21 @@ export default function TurnosCards() {
     };
 
     fetchPacienteInfo();
+  }, []);
+
+  useEffect(() => {
+    const fetchEspecialistaInfo = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/especialistas'); // Obtener información del paciente del backend
+        // Tomar la información del primer paciente de la lista (si hay pacientes)
+        const primerEspecialista = response.data[0];
+        setEspecialistaInfo(primerEspecialista);
+      } catch (error) {
+        console.error('Error al obtener la información del especialista:', error);
+      }
+    };
+
+    fetchEspecialistaInfo();
   }, []);
 
   const handleEliminarTurno = async () => {
@@ -46,7 +62,7 @@ export default function TurnosCards() {
           </Avatar>
         }
         title={`Turno N° ${pacienteInfo && pacienteInfo.id}`}
-        subheader={`Nombre y apellido: ${pacienteInfo && pacienteInfo.nombre}`}
+        subheader={`${especialistaInfo && especialistaInfo.ubicacion}`}
       />
       <CardContent>
         <TurnosList pacienteInfo={pacienteInfo} />
