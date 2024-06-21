@@ -38,17 +38,30 @@ const Navbar: React.FC = () => {
                         Inicio
                     </NavLink>
                     <NavLink
-                        to={PAGINA_TURNOS}
-                        className={({ isActive }) => (isActive ? 'item active' : 'item')}
-                    >
-                        Turnos
-                    </NavLink>
-                    <NavLink
                         to={PAGINA_CARTILLA_ESPECIALISTAS}
                         className={({ isActive }) => (isActive ? 'item active' : 'item')}
                     >
                         Cartilla
                     </NavLink>
+
+                    {isLoggedIn && (
+                        <NavLink
+                            to={PAGINA_TURNOS}
+                            className={({ isActive }) => (isActive ? 'item active' : 'item')}
+                        >
+                            Mis Turnos
+                        </NavLink>
+                    )}
+
+                    {isLoggedIn && (
+                        <NavLink
+                            to='/turnos/solicitar'
+                            className={({ isActive }) => (isActive ? 'item active' : 'item')}
+                        >
+                            Solicitar turno
+                        </NavLink>
+                    )}
+
                 </div>
 
                 {isLoggedIn ? (
