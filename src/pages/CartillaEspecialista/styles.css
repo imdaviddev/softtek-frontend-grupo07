@@ -1,0 +1,49 @@
+.cartilla {
+    padding: 2rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-image: url("../../assets/background-iniciar-sesion.jpg");
+    background-repeat: repeat;
+    background-position: center;
+    flex: 1;
+    background-position-y: bottom;
+    background-size: 80vh;
+    
+
+}
+
+.cartilla-titulo {
+    max-width: fit-content;
+    color: white;
+    background-color: rgba(7, 5, 27, 0.829);
+    padding: 2rem;
+    border-radius: 0.5rem;
+}
+
+.especialistas-list{
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .cartilla{
+        display: flex;
+        align-items: center;
+        background-size: cover;
+        background-position: center;
+    }
+    
+
+    .cartilla .cartilla-titulo{
+        font-size: 2rem;
+    }
+
+}
+
+@media (max-width: 500px) {
+    .cartilla .cartilla-titulo{
+        font-size: 1.3rem;
+    }
+}

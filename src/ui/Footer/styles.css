@@ -1,5 +1,5 @@
 footer{
-    min-height: 2rem;
+    min-height: 10vh;
     background-color: #010101;
     color: #f1f1f1;
     font-size: 12px;
@@ -7,4 +7,12 @@ footer{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+@media screen and (max-width: 900px) {
+    footer {
+        min-height: 20vh;
+        font-size: 18px;
+    }
 }

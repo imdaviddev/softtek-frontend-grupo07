@@ -1,0 +1,54 @@
+.especialista-card {
+    min-height: 14rem;
+    margin-bottom: 20px;
+    background-color: #eff0fce5;
+    border-radius: 6px;
+    color: rgb(17, 8, 104);
+    flex-basis: 300px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 8px 10px 40px 2px rgba(220, 222, 233, 0.671),
+    20px 10px 50px 0px rgba(10, 183, 189, 0.911),
+    0px 0px 30px 0px rgba(253, 243, 242, 0.904);
+}
+
+.especialista-card .contenido-principal {
+    padding: 18px 24px;
+}
+
+.especialista-card .imagen{
+    height: 10rem;
+    background-size: cover;
+    background-image: url("../../assets/medico.jpg");
+    border-radius: 0.5rem;
+
+}
+.especialista-card .titulo {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.especialista-card .direccion {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+.especialista-card .badges-container {
+    margin-top: 15px;
+}
+
+.especialista-card .badge {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #19c01e;
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .especialista-card {
+        font-size: 1.2rem;
+        flex-basis: 100%;
+    }
+
+}

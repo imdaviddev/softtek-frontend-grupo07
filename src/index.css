@@ -34,10 +34,6 @@ main {
   flex-direction: column;
 }
 
-footer {
-  min-height: 300px;
-}
-
 .not-found{
   color: #010101;
   display: flex;
