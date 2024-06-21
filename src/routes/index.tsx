@@ -5,7 +5,7 @@ import Turnos from '../pages/Turnos';
 import NotFound from '../pages/NotFound';
 import { PAGINA_INICIAR_SESION, PAGINA_INICIO, PAGINA_TURNOS, PAGINA_CARTILLA_ESPECIALISTAS } from './routes';
 import IniciarSesion from '../pages/IniciarSesion';
-import CartillaEspecialistas from '../pages/CartillaEspecialistas';
+import CartillaEspecialistas from '../pages/CartillaEspecialista/CartillaEspecialistas';
 
 const Router = () => {
   return (
