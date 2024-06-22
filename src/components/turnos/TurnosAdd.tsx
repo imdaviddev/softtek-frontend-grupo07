@@ -45,6 +45,7 @@ export default function TurnosAdd() {
         justifyContent: 'center',
         alignItems: 'center',
         padding: 2,
+        backgroundColor: '#f5f5f5',
       }}
     >
       <form onSubmit={handleSubmit}>
