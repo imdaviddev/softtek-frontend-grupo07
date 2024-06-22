@@ -1,12 +1,10 @@
-import TurnosContainer from '../components/turnos/TurnosContainer'
-import TurnosAdd from '../components/turnos/TurnosAdd'
+import TurnosList from '../components/turnos/TurnosList'
 import './turnos.css'
 
 const Turnos = () => {
   return (
     <main className='web-baground'>
-      <TurnosContainer/>
-      <TurnosAdd/>
+      <TurnosList/>
     </main>
   )
 }
