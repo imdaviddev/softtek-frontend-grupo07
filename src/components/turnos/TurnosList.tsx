@@ -6,7 +6,6 @@ interface Turno {
   motivoConsulta: string;
   fechaHoraCita: string;
   idMedicoEspecialista: number;
-  // Agrega más propiedades según sea necesario
 }
 
 interface Especialista {
@@ -69,20 +68,19 @@ const TurnosList = () => {
   return (
     <div>
       <h1>Listado de Turnos</h1>
-      <br></br>
+      <br />
       <div>
         <h2>Información del Usuario:</h2>
         <p>Nombre: {userData.nombre}</p>
         <p>DNI: {userData.dni}</p>
         <p>Número de Celular: {userData.numeroCelular}</p>
         <p>Email: {userData.email}</p>
-        <br></br>
+        <br />
       </div>
       <div>
-        <h2>Listado de Turnos:</h2>
         {turnos.map(turno => (
           <div key={turno.id}>
-            <p>Turno N°: {turno.id}</p>
+            <h2>Turno N°: {turno.id}</h2>
             <p>Motivo de Consulta: {turno.motivoConsulta}</p>
             <p>Fecha y Hora de la Cita: {new Date(turno.fechaHoraCita).toLocaleString()}</p>
             <p>ID del especialista: {1}</p>
@@ -94,9 +92,10 @@ const TurnosList = () => {
                 <p>Horarios de Consulta: {especialista.horariosConsulta}</p>
                 <p>Ubicación: {especialista.ubicacion}</p>
                 <p>Fecha de Creación: {especialista.fechaCreacion}</p>
-                <br></br>
+                <br />
               </div>
             ))}
+            <br />
           </div>
         ))}
       </div>
