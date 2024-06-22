@@ -12,22 +12,22 @@ import { useEffect, useState } from "react";
 import TurnosList from "../turnos/TurnosList";
 
 export default function TurnosCards() {
-  const [pacienteInfo, setPacienteInfo] = useState(null);
+  const [turnoInfo, setTurnoInfo] = useState(null);
   const [especialistaInfo, setEspecialistaInfo] = useState(null);
 
   useEffect(() => {
-    const fetchPacienteInfo = async () => {
+    const fetchTurnoInfo = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/pacientes'); // Obtener información del paciente del backend
+        const response = await axios.get('http://localhost:8080/pacientes/mis/turnos'); // Obtener información del paciente del backend
         // Tomar la información del primer paciente de la lista (si hay pacientes)
-        const primerPaciente = response.data[0];
-        setPacienteInfo(primerPaciente);
+        const primerTurno = response.data[0];
+        setTurnoInfo(primerTurno);
       } catch (error) {
-        console.error('Error al obtener la información del paciente:', error);
+        console.error('Error al obtener la información del turno:', error);
       }
     };
 
-    fetchPacienteInfo();
+    fetchTurnoInfo();
   }, []);
 
   useEffect(() => {
@@ -58,14 +58,14 @@ export default function TurnosCards() {
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            {pacienteInfo && pacienteInfo.id}
+            T
           </Avatar>
         }
-        title={`Turno N° ${pacienteInfo && pacienteInfo.id}`}
+        title="Ubicacion"
         subheader={`${especialistaInfo && especialistaInfo.ubicacion}`}
       />
       <CardContent>
-        <TurnosList pacienteInfo={pacienteInfo} />
+        <TurnosList turnoInfo={turnoInfo}/>
       </CardContent>
 
       <CardActions disableSpacing>
