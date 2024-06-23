@@ -1,13 +1,16 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import EspecialistasList from './EspecialistasList';
-import TurnosList from './TurnosList';
-import UserInfo from './UserInfo';
 import { Especialista, Turno, UserData } from './types';
 
-const MainComponent = () => {
-  const [turnos, setTurnos] = useState<Turno[]>([]);
+interface MainComponentProps {
+  onUserData: (data: UserData) => void;
+  onTurnos: (data: Turno[]) => void;
+  onEspecialistas: (data: Especialista[]) => void;
+}
+
+const MainComponent: React.FC<MainComponentProps> = ({ onUserData, onTurnos, onEspecialistas }) => {
   const [userData, setUserData] = useState<UserData | null>(null);
+  const [turnos, setTurnos] = useState<Turno[]>([]);
   const [especialistas, setEspecialistas] = useState<Especialista[]>([]);
 
   useEffect(() => {
@@ -21,6 +24,7 @@ const MainComponent = () => {
           }
         });
         setUserData(loginResponse.data);
+        onUserData(loginResponse.data);
 
         // Obtener listado de turnos
         const turnosResponse = await axios.get<Turno[]>('http://localhost:8080/pacientes/mis/turnos', {
@@ -29,31 +33,21 @@ const MainComponent = () => {
           }
         });
         setTurnos(turnosResponse.data);
+        onTurnos(turnosResponse.data);
 
         // Obtener listado de especialistas
         const especialistasResponse = await axios.get<Especialista[]>('http://localhost:8080/especialistas');
         setEspecialistas(especialistasResponse.data);
+        onEspecialistas(especialistasResponse.data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
 
     fetchData();
-  }, []);
+  }, [onUserData, onTurnos, onEspecialistas]);
 
-  if (!userData || !turnos.length || !especialistas.length) {
-    return <p></p>;
-  }
-
-  return (
-    <div>
-      <h1>Listado de Turnos</h1>
-      <br />
-      <UserInfo userData={userData} />
-      <TurnosList turnos={turnos} especialistas={especialistas} />
-      <EspecialistasList especialistas={especialistas} />
-    </div>
-  );
+  return <p></p>; // Este componente no renderiza nada directamente
 };
 
 export default MainComponent;
