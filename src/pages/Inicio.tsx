@@ -1,7 +1,9 @@
+import './turnos.css'
+
 const Inicio = () => {
   return (
-    <main>
-       Pagina Inicio
+    <main className="inicio">
+       <h1 className="almedin">AlMedin</h1>
     </main> 
   )
 }

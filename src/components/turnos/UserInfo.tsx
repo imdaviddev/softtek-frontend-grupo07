@@ -11,7 +11,7 @@ const UserInfo: React.FC<UserInfoProps> = ({ userData }) => {
       <h2>Información del Usuario:</h2>
       <p>Nombre: {userData.nombre}</p>
       <p>DNI: {userData.dni}</p>
-      <p>Número de Celular: {userData.numeroCelular}</p>
+      <p>Numero de Celular: {userData.numeroCelular}</p>
       <p>Email: {userData.email}</p>
       <br />
     </div>
