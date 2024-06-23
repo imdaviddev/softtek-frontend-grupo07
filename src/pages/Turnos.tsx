@@ -17,7 +17,7 @@ const Turnos = () => {
       {turnos.length > 0 && especialistas.length > 0 && (
         turnos.map((turno, index) => (
           <TurnosCardsInfo
-            key={index} // Añadí un key para evitar advertencias
+            key={index}
             turno={turno}
             especialista={especialistas[index % especialistas.length]}
           />

@@ -32,7 +32,7 @@ const TurnosCardsUser: React.FC<TurnosCardsUserProps> = ({ userData }) => {
             {userData.nombre.charAt(0)}
           </Avatar>
         }
-        title={userData.nombre}
+        title=""
       />
       <CardMedia
         component="img"
