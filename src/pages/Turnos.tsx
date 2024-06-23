@@ -1,11 +1,17 @@
 import MainComponent from '../components/turnos/MainComponent'
-import TurnosCards from '../components/turnos/TurnosCards'
+import TurnosCardsUser from '../components/turnos/TurnosCardsUser'
+import TurnosCardsInfo from '../components/turnos/TurnosCardsInfo'
 import './turnos.css'
 
 const Turnos = () => {
   return (
     <main className='web-baground'>
-      <TurnosCards/>
+      <div className="turno-cards-user">
+      <TurnosCardsUser />
+      </div>
+      <div className="turno-cards-info">
+      <TurnosCardsInfo />
+      </div>
       <MainComponent/>
     </main>
   )

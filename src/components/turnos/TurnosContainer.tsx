@@ -1,11 +1,13 @@
 import Grid from "@mui/material/Grid";
-import TurnosCards from "./TurnosCards";
+import TurnosCardsUser from "./TurnosCardsUser";
+
+import "./componentsTurnos.css"
 
 export default function TurnosContainer() {
   // Aquí puedes añadir más cards en el futuro
   const cards = [1, 2, 3, 4].map((_, index) => (
     <Grid item key={index}>
-      <TurnosCards />
+      <TurnosCardsUser />
     </Grid>
   ));
 

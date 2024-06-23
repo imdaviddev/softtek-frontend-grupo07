@@ -25,3 +25,17 @@
   left: 25%;
   transform: translate(-50%, -50%);
 }
+
+.turno-cards-info {
+  position: fixed;
+  top: 50%;
+  right: 25%;
+  transform: translate(-50%, -50%);
+}
+
+.turno-cards-user {
+  position: fixed;
+  top: 50%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+}

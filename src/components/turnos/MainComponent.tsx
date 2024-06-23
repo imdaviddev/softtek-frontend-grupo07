@@ -42,7 +42,7 @@ const MainComponent = () => {
   }, []);
 
   if (!userData || !turnos.length || !especialistas.length) {
-    return <p>Cargando...</p>;
+    return <p></p>;
   }
 
   return (
