@@ -5,3 +5,25 @@
   -o-background-size: cover;
   background-size: cover;
 }
+
+.inicio{
+  background: url(../assets/background-inicio.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.almedin{
+  font-size: 100px;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 4px #000000;
+  position: fixed;
+  top: 50%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+}
+
+
