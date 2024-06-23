@@ -1,5 +1,5 @@
-import Button from "@mui/material/Button";
-import CardActions from "@mui/material/CardActions";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 import CardContent from "@mui/material/CardContent";
 import * as React from "react";
 
@@ -23,7 +23,7 @@ interface TurnosCardsInfoProps {
 const TurnosCardsInfo: React.FC<TurnosCardsInfoProps> = ({ turno, especialista }) => {
   return (
   <React.Fragment>
-    <CardContent>
+    <CardContent sx={{ minWidth: 345, margin: '25px', bgcolor: "background.paper" }}>
 
       <ListItem>
         <ListItemAvatar>
@@ -61,12 +61,21 @@ const TurnosCardsInfo: React.FC<TurnosCardsInfoProps> = ({ turno, especialista }
         <ListItemText primary="Fecha y hora de la cita" secondary={turno.fechaHoraCita} />
       </ListItem>
 
+      <Stack direction="row" spacing={2}>
+
+        <Button variant="contained">
+          Modificar
+        </Button>
+
+        <Button variant="contained" color="error">
+          Eliminar
+        </Button>
+
+      </Stack>
+
     </CardContent>
 
-    <CardActions>
-      <Button size="small">Modificar</Button>
-      <Button size="small">Eliminar</Button>
-    </CardActions>
+    
     
   </React.Fragment>
 );};
