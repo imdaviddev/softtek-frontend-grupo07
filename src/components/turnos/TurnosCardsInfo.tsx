@@ -1,6 +1,4 @@
-import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import * as React from "react";
@@ -15,27 +13,17 @@ import AccessTimeRoundedIcon from '@mui/icons-material/AccessTimeRounded';
 import AddLocationRoundedIcon from '@mui/icons-material/AddLocationRounded';
 import HealingRoundedIcon from '@mui/icons-material/HealingRounded';
 
-const card = (
+import { Especialista, Turno } from './types';
+
+interface TurnosCardsInfoProps {
+  turno: Turno;
+  especialista: Especialista;
+}
+
+const TurnosCardsInfo: React.FC<TurnosCardsInfoProps> = ({ turno, especialista }) => {
+  return (
   <React.Fragment>
     <CardContent>
-
-      <ListItem>
-        <ListItemAvatar>
-          <Avatar>
-            <EditNoteRoundedIcon />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Motivo de la consulta" secondary="123" />
-      </ListItem>
-
-      <ListItem>
-        <ListItemAvatar>
-          <Avatar>
-            <AccessTimeRoundedIcon  />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Fecha y hora de la cita" secondary="123" />
-      </ListItem>
 
       <ListItem>
         <ListItemAvatar>
@@ -43,7 +31,16 @@ const card = (
             <HealingRoundedIcon  />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Medico Especialista" secondary="123" />
+        <ListItemText primary="Medico Especialista" secondary={especialista.nombre} />
+      </ListItem>
+
+      <ListItem>
+        <ListItemAvatar>
+          <Avatar>
+            <EditNoteRoundedIcon />
+          </Avatar>
+        </ListItemAvatar>
+        <ListItemText primary="Motivo de la consulta" secondary={turno.motivoConsulta} />
       </ListItem>
 
       <ListItem>
@@ -52,8 +49,18 @@ const card = (
             <AddLocationRoundedIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Ubicacion" secondary="123" />
+        <ListItemText primary="Ubicacion" secondary={especialista.ubicacion} />
       </ListItem>
+
+      <ListItem>
+        <ListItemAvatar>
+          <Avatar>
+            <AccessTimeRoundedIcon  />
+          </Avatar>
+        </ListItemAvatar>
+        <ListItemText primary="Fecha y hora de la cita" secondary={turno.fechaHoraCita} />
+      </ListItem>
+
     </CardContent>
 
     <CardActions>
@@ -62,12 +69,6 @@ const card = (
     </CardActions>
     
   </React.Fragment>
-);
+);};
 
-export default function OutlinedCard() {
-  return (
-    <Box sx={{ minWidth: 275 }}>
-      <Card variant="outlined">{card}</Card>
-    </Box>
-  );
-}
+export default TurnosCardsInfo;
