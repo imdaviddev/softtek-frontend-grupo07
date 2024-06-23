@@ -25,7 +25,7 @@ interface TurnosCardsUserProps {
 
 const TurnosCardsUser: React.FC<TurnosCardsUserProps> = ({ userData }) => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, position: 'sticky', margin: '50px' }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: blue[500] }} aria-label="recipe">
