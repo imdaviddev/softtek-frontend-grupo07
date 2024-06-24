@@ -28,3 +28,8 @@ export default {
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+- Integrantes:
+David Cañete, Dario Diaz, Santiago Lizondo
+
+![image](https://github.com/Tilk1/softtek-obra-social-grupo07/assets/24284918/26334e36-de92-4373-9f9f-77858f964d43)
