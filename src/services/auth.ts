@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080'
+const apiUrl = import.meta.env.VITE_API_URL;
 
 interface LoginResponse {
     success: boolean;
@@ -11,7 +11,7 @@ interface LoginResponse {
 class AuthService {
     async login(email: string, password: string): Promise<LoginResponse> {
         try {
-            const response = await axios.get(`${API_URL}/login`, {
+            const response = await axios.get(`${apiUrl}/login`, {
                 params: {
                     login: email,
                     password: password
