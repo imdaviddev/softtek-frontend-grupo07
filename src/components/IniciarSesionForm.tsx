@@ -1,54 +1,42 @@
-import * as React from 'react';
-import { useState } from 'react';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import AuthService from '../services/auth'
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import * as React from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AuthService from '../services/auth';
 
-import Imagen from '../assets/background.jpg'
+import Imagen from '../assets/background.jpg';
 
-function Copyright(props: any) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://localhost:5171/">
-        AlMedin
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-// TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
 export default function IniciarSesionForm() {
   const [loginError, setLoginError] = useState<string | null>(null);
   const navigate = useNavigate();
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const email = data.get('email') as string;
     const password = data.get('password') as string;
 
-    try {
-      const response = await AuthService.login(email, password);
+    const response = await AuthService.login(email, password);
+
+    if (response.success) {
       setLoginError(null);
       navigate('/');
-    } catch (error) {
-      setLoginError('Credenciales incorrectas. Por favor, verifica tu email y contraseña.');
+    }
+    else {
+      setLoginError(response.error || 'Ha ocurrido un error en el inicio de sesion');
     }
   };
 
@@ -135,7 +123,6 @@ export default function IniciarSesionForm() {
                   </Link>
                 </Grid>
               </Grid>
-              <Copyright sx={{ mt: 5 }} />
             </Box>
           </Box>
         </Grid>
