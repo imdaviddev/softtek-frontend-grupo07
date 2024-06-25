@@ -111,18 +111,7 @@ export default function IniciarSesionForm() {
               >
                 Iniciar Sesion
               </Button>
-              <Grid container>
-                <Grid item xs>
-                  <Link href="#" variant="body2">
-                    ¿Olvidaste Tu Contraseña?
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link href="#" variant="body2">
-                    {"¿No tienes una cuenta? Registrate"}
-                  </Link>
-                </Grid>
-              </Grid>
+
             </Box>
           </Box>
         </Grid>
