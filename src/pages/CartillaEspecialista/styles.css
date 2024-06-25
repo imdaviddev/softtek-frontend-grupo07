@@ -1,7 +1,7 @@
 .cartilla {
     padding: 2rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-image: url("../../assets/background-iniciar-sesion.jpg");
+    /* background-image: url("../../assets/background-iniciar-sesion.jpg"); */
     background-repeat: repeat;
     background-position: center;
     flex: 1;
