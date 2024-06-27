@@ -21,3 +21,10 @@ export interface UserData {
   email: string;
   token: string;
 }
+
+export interface MisTurnosResponse {
+  id: number;
+  motivoConsulta: string;
+  fechaHoraCita: string;
+  especialista: Especialista;
+}

@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AuthService from '../services/auth';
+import AuthService from '../services/authService';
 
 import Imagen from '../assets/background.jpg';
 
