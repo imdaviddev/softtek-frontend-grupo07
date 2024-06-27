@@ -8,10 +8,10 @@ import CardOverflow from '@mui/joy/CardOverflow';
 import Typography from '@mui/joy/Typography';
 import { useState } from 'react';
 
-import UsuarioService from "../services/usuarioService";
+import { getCurrentUser } from '../services/usuarioService';
 
 const TurnosCardsUser = () => {
-  const userData = UsuarioService.getCurrentUser();
+  const userData = getCurrentUser();
   const [copiedMessage, setCopiedMessage] = useState('');
 
   const handleCopyData = () => {

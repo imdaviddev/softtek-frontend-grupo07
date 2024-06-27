@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import usuarioService from '../../services/usuarioService';
+import { getMisTurnos } from '../../services/usuarioService';
 import { MisTurnosResponse } from './types';
 import Button from '@mui/joy/Button';
 import Table from '@mui/joy/Table';
@@ -9,14 +9,18 @@ const MisTurnosTable = () => {
     const [error, setError] = useState<string>('');
 
     useEffect(() => {
-        usuarioService.getMisTurnos().then((response) => {
-            setRows(response.data);
-        }).catch(() => {
-            setError('Error al cargar los turnos');
-        });
+        const fetchData = async () => {
+            try {
+                const response = await getMisTurnos();
+                setRows(response);
+            } catch (error) {
+                setError('Error al cargar los turnos');
+            }
+        };
+        fetchData();
     }, []);
 
-    if (error) {
+    if (error || !rows) {
         return <p>{error}</p>;
     }
 

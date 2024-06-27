@@ -2,38 +2,39 @@ import axios from 'axios';
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
-class UsuarioService {
+export function getCurrentUser() {
+    const user = localStorage.getItem('user');
+    return user ? JSON.parse(user) : null;
+}
 
-    getCurrentUser() {
-        const user = localStorage.getItem('user');
-        return user ? JSON.parse(user) : null;
+export function obtenerToken() {
+    const userStr = localStorage.getItem('user');
+    let user = null;
+    if (!userStr) {
+        return null;
     }
+    try {
+        user = JSON.parse(userStr);
+    } catch (error) {
+        console.error('Error parsing user object from localStorage:', error);
+    }
+    return user?.token || null;
+}
 
-    async getMisTurnos() {
-        const token = this.obtenerToken();
-        if (token == null) {
-            return Promise.reject('No hay token');
-        }
-        return axios.get(`${apiUrl}/pacientes/mis/turnos`, {
+export async function getMisTurnos() {
+    const token = obtenerToken();
+    if (!token) {
+        return Promise.reject('No hay token');
+    }
+    try {
+        const response = await axios.get(`${apiUrl}/pacientes/mis/turnos`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
         });
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching mis turnos:', error);
+        throw error;
     }
-
-    obtenerToken() {
-        const userStr = localStorage.getItem('user');
-        let user: { token?: string } | null = null;
-        if (!userStr) {
-            return null;
-        }
-        user = JSON.parse(userStr);
-        if (!user || !user.token) {
-            return null;
-        }
-        return user.token;
-    }
-
 }
-
-export default new UsuarioService();
