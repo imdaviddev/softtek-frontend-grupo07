@@ -13,15 +13,6 @@ export interface Especialista {
   ubicacion: string;
   fechaCreacion: string;
 }
-
-export interface UserData {
-  nombre: string;
-  dni: string;
-  numeroCelular: string;
-  email: string;
-  token: string;
-}
-
 export interface MisTurnosResponse {
   id: number;
   motivoConsulta: string;

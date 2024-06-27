@@ -15,7 +15,6 @@ const TurnosCardsUser = () => {
   const [copiedMessage, setCopiedMessage] = useState('');
 
   const handleCopyData = () => {
-    // Implementa la lógica para copiar los datos del usuario aquí
     const { nombre, dni, numeroCelular, email } = userData;
     const dataToCopy = `Nombre: ${nombre}\nDNI: ${dni}\nNúmero celular: ${numeroCelular}\nEmail: ${email}`;
     navigator.clipboard.writeText(dataToCopy)
