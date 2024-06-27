@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Footer, Navbar } from '../ui';
 import Inicio from '../pages/Inicio';
-import Turnos from '../pages/Turnos';
-import NotFound from '../pages/NotFound';
+import Turnos from '../pages/Turnos/Turnos';
+import NotFound from '../pages/ErrorPages/NotFound';
 import { PAGINA_INICIAR_SESION, PAGINA_INICIO, PAGINA_TURNOS, PAGINA_CARTILLA_ESPECIALISTAS } from './routes';
-import IniciarSesion from '../pages/IniciarSesion';
+import IniciarSesion from '../pages/Usuarios/IniciarSesion';
 import CartillaEspecialistas from '../pages/CartillaEspecialista/CartillaEspecialistas';
 
 const Router = () => {
@@ -28,10 +28,10 @@ const Router = () => {
         />
         <Route
           path="*"
-          element={<NotFound/>}
+          element={<NotFound />}
         />
       </Routes>
-      <Footer/>
+      <Footer />
     </BrowserRouter>
   );
 };

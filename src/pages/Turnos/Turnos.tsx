@@ -1,6 +1,6 @@
 import { Grid } from '@mui/material';
-import TurnosCardsUser from '../components/UserCard';
-import MisTurnos from '../components/turnos/MisTurnos';
+import TurnosCardsUser from '../../components/UserCard';
+import MisTurnos from '../../components/turnos/MisTurnos';
 
 const Turnos = () => {
   return (

@@ -1,10 +1,10 @@
-import './turnos.css'
+import './home.css'
 
 const Inicio = () => {
   return (
     <main className="inicio">
-       <h1 className="almedin">AlMedin</h1>
-    </main> 
+      <h1 className="almedin">AlMedin</h1>
+    </main>
   )
 }
 
