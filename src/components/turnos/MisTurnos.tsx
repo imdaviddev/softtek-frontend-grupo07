@@ -84,7 +84,7 @@ const MisTurnosTable = () => {
                         <th>Motivo de Consulta</th>
                         <th>Fecha y Hora de la Cita</th>
                         <th>Nombre del especialista</th>
-                        <th>Acciones</th>
+                        <th style={{ width: "25%" }}>Acciones</th>
                         <th>Receta</th>
                     </tr>
                 </thead>
@@ -96,7 +96,7 @@ const MisTurnosTable = () => {
                             <td>{new Date(row.fechaHoraCita).toLocaleString()}</td>
                             <td>{row.especialista?.nombre}</td>
                             <td>
-                                <ButtonGroup spacing="0.5rem" aria-label="spacing button group">
+                                <ButtonGroup spacing="0.9rem" aria-label="spacing button group">
                                     <Button variant="outlined" startIcon={<EditIcon />} onClick={function () { }} >Editar</Button>
                                     <Button variant="outlined" startIcon={<DeleteForeverIcon />} onClick={() => handleEliminarClick(row.id)}>Eliminar</Button>
                                 </ButtonGroup>
