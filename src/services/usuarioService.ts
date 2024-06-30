@@ -38,3 +38,21 @@ export async function getMisTurnos() {
         throw error;
     }
 }
+
+export async function eliminarTurno(id: number) {
+    const token = obtenerToken();
+    if (!token) {
+        return Promise.reject('No hay token');
+    }
+    try {
+        const response = await axios.delete(`${apiUrl}/turnos/${id}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error deleting turno:', error);
+        throw error;
+    }
+}
