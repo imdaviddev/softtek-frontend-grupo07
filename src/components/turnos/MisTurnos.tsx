@@ -102,10 +102,16 @@ const MisTurnosTable = () => {
                                 </ButtonGroup>
                             </td>
                             <td>
-                                {row.receta && (<Button onClick={() => ver_receta(row.receta)} variant="outlined" startIcon={<DownloadIcon />}>
-                                    Disponible
-                                </Button>
+                                {row.receta ? (
+                                    <Button onClick={() => ver_receta(row.receta)} variant="outlined" startIcon={<DownloadIcon />}>
+                                        Disponible
+                                    </Button>
+                                ) : (
+                                    <Button disabled variant="outlined">
+                                        Aun no cargada
+                                    </Button>
                                 )}
+
                             </td>
                         </tr>
                     ))}
