@@ -13,9 +13,17 @@ export interface Especialista {
   ubicacion: string;
   fechaCreacion: string;
 }
+
+export interface Receta {
+  id: number;
+  descripcion: string;
+  fechaCreacion: string;
+}
+
 export interface MisTurnosResponse {
   id: number;
   motivoConsulta: string;
   fechaHoraCita: string;
   especialista: Especialista;
+  receta?: Receta;
 }
