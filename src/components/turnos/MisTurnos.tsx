@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
 import { getMisTurnos, eliminarTurno } from "../../services/usuarioService";
 import { MisTurnosResponse } from "./types";
-import ButtonGroup from '@mui/joy/ButtonGroup';
+import Box from '@mui/material/Box';
+import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@mui/material/Button';
-import Table from "@mui/joy/Table";
+import Table from "@mui/material/Table";
+import TableContainer from '@mui/material/TableContainer';
+import Paper from '@mui/material/Paper';
+import TableHead from '@mui/material/TableHead';
+import TableBody from '@mui/material/TableBody';
+import TableRow from '@mui/material/TableRow';
+import TableCell from '@mui/material/TableCell';
 import DownloadIcon from '@mui/icons-material/Download';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
@@ -103,56 +110,54 @@ const MisTurnosTable = () => {
 
     return (
         <>
-            <Table hoverRow>
-                <thead>
-                    <tr>
-                        <th style={{ width: "7%" }}>Turno N°</th>
-                        <th>Motivo de Consulta</th>
-                        <th>Fecha y Hora de la Cita</th>
-                        <th>Nombre del especialista</th>
-                        <th style={{ width: "30%" }}>Acciones</th>
-                        <th>Receta</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {rows.map((row) => (
-                        <tr key={row.id}>
-                            <td>{row.id}</td>
-                            <td>{row.motivoConsulta}</td>
-                            <td>{new Date(row.fechaHoraCita).toLocaleString()}</td>
-                            <td>{row.especialista?.nombre}</td>
-                            <td>
-                                <ButtonGroup spacing="0.2rem" aria-label="spacing button group" >
-                                    
-                                    <Button size="small" variant="outlined" startIcon={<EditIcon />} onClick={function () { }}>
-                                        Editar
-                                    </Button>
-                                    
-                                    <Button size="small" variant="outlined" startIcon={<DeleteForeverIcon />} onClick={() => handleEliminarClick(row.id)}>
-                                        Eliminar
-                                    </Button>
-                                    
-                                    <Button size="small" variant="outlined" startIcon={<SendIcon />} onClick={() => sendEmail(row)}>
-                                        Enviar Correo
-                                    </Button>
-
-                                </ButtonGroup>
-                            </td>
-                            <td>
-                                {row.receta ? (
-                                    <Button size="small" variant="outlined" startIcon={<DownloadIcon />} onClick={() => ver_receta(row.receta)} >
-                                        Disponible
-                                    </Button>
-                                ) : (
-                                    <Button size="small" variant="outlined" disabled>
-                                        Aun no cargada
-                                    </Button>
-                                )}
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </Table>
+            <TableContainer component={Paper}>
+                <Table hoverRow>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell style={{ width: "10%" }}>Turno N°</TableCell>
+                            <TableCell style={{ width: "20%" }}>Motivo de Consulta</TableCell>
+                            <TableCell style={{ width: "20%" }}>Fecha y Hora de la Cita</TableCell>
+                            <TableCell style={{ width: "20%" }}>Nombre del especialista</TableCell>
+                            <TableCell style={{ width: "30%" }}>Acciones</TableCell>
+                            <TableCell>Receta</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {rows.map((row) => (
+                            <TableRow key={row.id}>
+                                <TableCell>{row.id}</TableCell>
+                                <TableCell>{row.motivoConsulta}</TableCell>
+                                <TableCell>{new Date(row.fechaHoraCita).toLocaleString()}</TableCell>
+                                <TableCell>{row.especialista?.nombre}</TableCell>
+                                <TableCell>
+                                    <ButtonGroup spacing="0.2rem" aria-label="spacing button group">
+                                        <Button size="small" variant="outlined" startIcon={<EditIcon />} onClick={function () { }}>
+                                            Editar
+                                        </Button>
+                                        <Button size="small" variant="outlined" startIcon={<DeleteForeverIcon />} onClick={() => handleEliminarClick(row.id)}>
+                                            Eliminar
+                                        </Button>
+                                        <Button size="small" variant="outlined" startIcon={<SendIcon />} onClick={() => sendEmail(row)}>
+                                            Enviar Correo
+                                        </Button>
+                                    </ButtonGroup>
+                                </TableCell>
+                                <TableCell>
+                                    {row.receta ? (
+                                        <Button size="small" variant="outlined" startIcon={<DownloadIcon />} onClick={() => ver_receta(row.receta)}>
+                                            Disponible
+                                        </Button>
+                                    ) : (
+                                        <Button size="small" variant="outlined" disabled>
+                                            No disponible
+                                        </Button>
+                                    )}
+                                </TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
             <RecetaModal
                 open={modalOpen}
                 handleClose={handleCloseModal}
