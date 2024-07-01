@@ -1,15 +1,14 @@
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import DownloadIcon from '@mui/icons-material/Download';
 import EditIcon from '@mui/icons-material/Edit';
-import SendIcon from '@mui/icons-material/Send';
 import Button from '@mui/material/Button';
-import ButtonGroup from '@mui/material/ButtonGroup';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
 import Table from "@mui/material/Table";
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -110,7 +109,7 @@ const MisTurnosTable = () => {
     return (
         <>
             <TableContainer component={Paper}>
-                <Table hoverRow>
+                <Table>
                     <TableHead>
                         <TableRow>
                             <TableCell style={{ width: "10%" }}>Turno N°</TableCell>
@@ -129,17 +128,14 @@ const MisTurnosTable = () => {
                                 <TableCell>{new Date(row.fechaHoraCita).toLocaleString()}</TableCell>
                                 <TableCell>{row.especialista?.nombre}</TableCell>
                                 <TableCell>
-                                    <ButtonGroup spacing="0.2rem" aria-label="spacing button group">
+                                    <Stack spacing={2} direction="row">
                                         <Button size="small" variant="outlined" startIcon={<EditIcon />} onClick={function () { }}>
                                             Editar
                                         </Button>
                                         <Button size="small" variant="outlined" startIcon={<DeleteForeverIcon />} onClick={() => handleEliminarClick(row.id)}>
                                             Eliminar
                                         </Button>
-                                        <Button size="small" variant="outlined" startIcon={<SendIcon />} onClick={() => sendEmail(row)}>
-                                            Enviar Correo
-                                        </Button>
-                                    </ButtonGroup>
+                                    </Stack>
                                 </TableCell>
                                 <TableCell>
                                     {row.receta ? (

@@ -6,10 +6,10 @@ const Turnos = () => {
   return (
     <div>
       <Grid container spacing={2} sx={{ backgroundColor: '#f0f0f0', height: '100vh' }}>
-        <Grid item xs={5} md={2}>
+        <Grid item xs={12} md={2}>
           <TurnosCardsUser />
         </Grid>
-        <Grid item xs={5} md={9}>
+        <Grid item xs={12} md={9}>
           <MisTurnos />
         </Grid>
       </Grid>
