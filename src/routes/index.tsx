@@ -3,9 +3,13 @@ import { Footer, Navbar } from '../ui';
 import Inicio from '../pages/Inicio';
 import Turnos from '../pages/Turnos/Turnos';
 import NotFound from '../pages/ErrorPages/NotFound';
-import { PAGINA_INICIAR_SESION, PAGINA_INICIO, PAGINA_TURNOS, PAGINA_CARTILLA_ESPECIALISTAS } from './routes';
+import {
+  PAGINA_INICIAR_SESION, PAGINA_INICIO, PAGINA_TURNOS, PAGINA_CARTILLA_ESPECIALISTAS,
+  PAGINA_SOLICITAR_TURNO
+} from './routes';
 import IniciarSesion from '../pages/Usuarios/IniciarSesion';
 import CartillaEspecialistas from '../pages/CartillaEspecialista/CartillaEspecialistas';
+import CrearTurno from '../pages/Turnos/CrearTurno';
 
 const Router = () => {
   return (
@@ -29,6 +33,10 @@ const Router = () => {
         <Route
           path="*"
           element={<NotFound />}
+        />
+        <Route
+          path={PAGINA_SOLICITAR_TURNO}
+          element={<CrearTurno />}
         />
       </Routes>
       <Footer />
