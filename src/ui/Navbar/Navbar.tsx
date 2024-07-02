@@ -1,14 +1,8 @@
+import { Button } from '@mui/material';
 import React, { useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import * as routes from '../../routes/routes';
 import './styles.css';
-import { NavLink } from 'react-router-dom';
-import {
-    PAGINA_CARTILLA_ESPECIALISTAS,
-    PAGINA_INICIAR_SESION,
-    PAGINA_INICIO,
-    PAGINA_TURNOS,
-} from '../../routes/routes';
-import { useNavigate } from 'react-router-dom';
-import { Button, Grid } from '@mui/material';
 
 const Navbar: React.FC = () => {
     const navigate = useNavigate();
@@ -32,13 +26,13 @@ const Navbar: React.FC = () => {
             <div className={`toggle-menu ${toggleMenu ? 'visible' : 'oculto'}`}>
                 <div className="items">
                     <NavLink
-                        to={PAGINA_INICIO}
+                        to={routes.PAGINA_INICIO}
                         className={({ isActive }) => (isActive ? 'item active' : 'item')}
                     >
                         Inicio
                     </NavLink>
                     <NavLink
-                        to={PAGINA_CARTILLA_ESPECIALISTAS}
+                        to={routes.PAGINA_CARTILLA_ESPECIALISTAS}
                         className={({ isActive }) => (isActive ? 'item active' : 'item')}
                     >
                         Cartilla
@@ -46,7 +40,7 @@ const Navbar: React.FC = () => {
 
                     {isLoggedIn && (
                         <NavLink
-                            to={PAGINA_TURNOS}
+                            to={routes.PAGINA_TURNOS}
                             className={({ isActive }) => (isActive ? 'item active' : 'item')}
                         >
                             Mis Turnos
@@ -55,7 +49,7 @@ const Navbar: React.FC = () => {
 
                     {isLoggedIn && (
                         <NavLink
-                            to='/turnos/solicitar'
+                            to={routes.PAGINA_SOLICITAR_TURNO}
                             className={({ isActive }) => (isActive ? 'item active' : 'item')}
                         >
                             Solicitar turno
@@ -69,7 +63,7 @@ const Navbar: React.FC = () => {
                         Cerrar Sesión
                     </Button>
                 ) : (
-                    <Button component={NavLink} to={PAGINA_INICIAR_SESION} variant="contained" color="primary">
+                    <Button component={NavLink} to={routes.PAGINA_INICIAR_SESION} variant="contained" color="primary">
                         Iniciar Sesión
                     </Button>
                 )}

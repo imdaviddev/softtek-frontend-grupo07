@@ -31,12 +31,12 @@ const Router = () => {
           element={<CartillaEspecialistas />}
         />
         <Route
-          path="*"
-          element={<NotFound />}
-        />
-        <Route
           path={PAGINA_SOLICITAR_TURNO}
           element={<CrearTurno />}
+        />
+        <Route
+          path="*"
+          element={<NotFound />}
         />
       </Routes>
       <Footer />
