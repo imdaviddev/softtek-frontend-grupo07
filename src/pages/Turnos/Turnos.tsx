@@ -4,8 +4,8 @@ import MisTurnos from '../../components/turnos/MisTurnos';
 
 const Turnos = () => {
   return (
-    <div>
-      <Grid container spacing={2} sx={{ backgroundColor: '#f0f0f0', height: '100vh' }}>
+    <>
+      <Grid container m={2} spacing={2} sx={{ backgroundColor: '#f0f0f0', height: '100vh' }}>
         <Grid item xs={12} md={2}>
           <TurnosCardsUser />
         </Grid>
@@ -13,7 +13,7 @@ const Turnos = () => {
           <MisTurnos />
         </Grid>
       </Grid>
-    </div>
+    </>
   );
 };
 
