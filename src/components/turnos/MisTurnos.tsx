@@ -19,10 +19,10 @@ import emailjs from 'emailjs-com';
 import { useEffect, useState } from "react";
 import { eliminarTurno, getMisTurnos } from "../../services/usuarioService";
 import RecetaModal from "./RecetaModal";
-import { MisTurnosResponse } from "../../models";
+import { IMisTurnosResponse } from "../../models";
 
 const MisTurnosTable = () => {
-    const [rows, setRows] = useState<MisTurnosResponse[]>([]);
+    const [rows, setRows] = useState<IMisTurnosResponse[]>([]);
     const [error, setError] = useState<string>("");
 
     const [modalOpen, setModalOpen] = useState(false);
@@ -74,7 +74,7 @@ const MisTurnosTable = () => {
         setDialogOpen(true);
     };
 
-    const sendEmail = async (turno: MisTurnosResponse) => {
+    const sendEmail = async (turno: IMisTurnosResponse) => {
         try {
             const templateParams = {
                 to_email: "prueba@gmail.com", // Correo del usuario
