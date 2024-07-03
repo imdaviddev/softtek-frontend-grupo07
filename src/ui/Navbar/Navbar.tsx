@@ -24,7 +24,7 @@ const Navbar: React.FC = () => {
             <div className="logo">AlMedin</div>
 
             <div className={`toggle-menu ${toggleMenu ? 'visible' : 'oculto'}`}>
-                <div className="items">
+                <div className="items" onClickCapture={handleToggleMenuBtn}>
                     <NavLink
                         to={routes.PAGINA_INICIO}
                         className={({ isActive }) => (isActive ? 'item active' : 'item')}
