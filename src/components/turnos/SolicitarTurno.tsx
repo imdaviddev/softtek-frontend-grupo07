@@ -10,11 +10,12 @@ import Typography from '@mui/joy/Typography';
 import Grid from '@mui/joy/Grid';
 import CardActions from '@mui/joy/CardActions';
 import * as turnosService from '../../services/turnosService';
+import { IMisTurnosResponse } from '../../models';
 
 const SolicitarTurno = () => {
-    const [especialidades, setEspecialidades] = useState([]);
-    const [turnosDisponibles, setTurnosDisponibles] = useState([]);
-    const [showTurnosGrid, setShowTurnosGrid] = useState(false); // Estado para controlar la visibilidad del grid
+    const [especialidades, setEspecialidades] = useState<string[]>([]);
+    const [turnosDisponibles, setTurnosDisponibles] = useState<IMisTurnosResponse[]>([]);
+    const [showTurnosGrid, setShowTurnosGrid] = useState(false); 
     const { control, handleSubmit, watch, formState: { errors } } = useForm({
         defaultValues: {
             especialidad: '',
@@ -24,12 +25,11 @@ const SolicitarTurno = () => {
     const especialidadValue = watch('especialidad');
     const motivoValue = watch('motivo');
 
-    const getTurnosDisponiblesPorEspecialidad = (especialidad) => {
+    const getTurnosDisponiblesPorEspecialidad = (especialidad: string) => {
         turnosService.getTurnosPorEspecialidad(especialidad)
             .then((turnos) => {
                 setTurnosDisponibles(turnos);
-                setShowTurnosGrid(true); // Mostrar el grid después de obtener los turnos
-                console.log('Turnos disponibles:', turnos);
+                setShowTurnosGrid(true); 
             })
             .catch((error) => {
                 console.error('Error fetching turnos:', error);
@@ -40,7 +40,6 @@ const SolicitarTurno = () => {
         turnosService.getEspecialidades()
             .then((especialidades) => {
                 setEspecialidades(especialidades);
-                console.log('Especialidades:', especialidades);
             })
             .catch((error) => {
                 console.error('Error fetching especialidades:', error);
@@ -52,11 +51,10 @@ const SolicitarTurno = () => {
     }, []);
 
     const onSubmit = data => {
-        getTurnosDisponiblesPorEspecialidad(data.especialidad); // Llamar a la función con la especialidad seleccionada
-        console.log('Form data:', data);
+        getTurnosDisponiblesPorEspecialidad(data.especialidad); 
     };
 
-    const renderCard = (day, specialist) => (
+    const renderCard = (day : string, specialist: string) => (
         <Card variant="outlined" sx={{ mt: 2 }} key={`${day}-${specialist}`}>
             <CardContent>
                 <Typography>{day}</Typography>

@@ -5,7 +5,7 @@ import './styles.css'
 import { IEspecialista } from '../../models';
 import { getEspecialistas } from '../../services/especialistaService';
 
-const App: React.FC = () => {
+const CartillaEspecialista: React.FC = () => {
     const [especialistas, setEspecialistas] = useState<IEspecialista[]>([]);
 
     useEffect(() => {
@@ -29,4 +29,4 @@ const App: React.FC = () => {
     );
 }
 
-export default App;
+export default CartillaEspecialista;

@@ -19,7 +19,7 @@ import emailjs from 'emailjs-com';
 import { useEffect, useState } from "react";
 import { eliminarTurno, getMisTurnos } from "../../services/usuarioService";
 import RecetaModal from "./RecetaModal";
-import { MisTurnosResponse } from "./types";
+import { MisTurnosResponse } from "../../models";
 
 const MisTurnosTable = () => {
     const [rows, setRows] = useState<MisTurnosResponse[]>([]);
