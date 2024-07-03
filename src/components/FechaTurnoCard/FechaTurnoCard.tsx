@@ -2,7 +2,7 @@ import { Card } from '@mui/joy'
 import { Button, CardContent, Typography } from '@mui/material'
 import React from 'react'
 import CardActions from '@mui/joy/CardActions';
-import { Grid } from '@mui/material/Grid/Grid'
+import Grid from '@mui/material/Grid/Grid'
 
 interface Props {
   day: string,
