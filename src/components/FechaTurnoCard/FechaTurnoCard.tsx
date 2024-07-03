@@ -18,7 +18,7 @@ const FechaTurnoCard: React.FC<Props> = (props) => {
           <Typography>{props.specialist}</Typography>
       </CardContent>
       <CardActions>
-          <Button variant="container">Solicitar</Button>
+          <Button variant="contained">Solicitar</Button>
       </CardActions>
     </Card>
   </Grid>
