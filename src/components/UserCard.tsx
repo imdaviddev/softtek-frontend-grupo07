@@ -6,12 +6,12 @@ import CardActions from '@mui/joy/CardActions';
 import CardContent from '@mui/joy/CardContent';
 import CardOverflow from '@mui/joy/CardOverflow';
 import Typography from '@mui/joy/Typography';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { getCurrentUser } from '../services/usuarioService';
 
 const TurnosCardsUser = () => {
-  const userData = getCurrentUser();
+  const [userData, setUserData] = useState<any>();
   const [copiedMessage, setCopiedMessage] = useState('');
 
   const handleCopyData = () => {
@@ -24,15 +24,29 @@ const TurnosCardsUser = () => {
       .catch((err) => console.error('Error al copiar datos:', err));
   };
 
+  useEffect(() => {
+    const fetchUser = () => {
+      try{
+        setUserData(getCurrentUser());
+      }catch(error){
+      console.error("Hubo un error al cargar la informacion del usuario")
+      }
+    }
+    fetchUser();
+  },[])
+
   return (
     <Card
       sx={{
-        width: 320,
         height: 320,
         maxWidth: '100%',
         boxShadow: 'lg',
+        minWidth: 300,
       }}
     >
+      {!userData && <p>No se pudo cargar el usuario</p>}
+      {userData && 
+      <>
       <CardContent sx={{ alignItems: 'center', textAlign: 'center' }}>
         <Avatar src="https://mui.com/static/images/avatar/1.jpg" sx={{ '--Avatar-size': '4rem' }} />
         <Typography level="title-lg">{userData.nombre}</Typography>
@@ -58,6 +72,7 @@ const TurnosCardsUser = () => {
           </Typography>
         )}
       </CardOverflow>
+      </>}
     </Card>
   );
 };

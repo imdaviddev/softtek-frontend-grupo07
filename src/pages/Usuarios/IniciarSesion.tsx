@@ -1,6 +1,6 @@
 import IniciarSesionForm from '../../components/IniciarSesionForm'
 
-const IniciarSesion = () => {
+const IniciarSesion: React.FC = () => {
   return (
     <main>
       <IniciarSesionForm />

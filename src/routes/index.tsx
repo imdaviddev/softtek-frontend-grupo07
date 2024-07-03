@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Footer, Navbar } from '../ui';
-import Inicio from '../pages/Inicio';
+import Inicio from '../pages/Inicio/Inicio';
 import Turnos from '../pages/Turnos/Turnos';
 import NotFound from '../pages/ErrorPages/NotFound';
 import {

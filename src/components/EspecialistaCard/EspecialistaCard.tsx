@@ -1,6 +1,6 @@
 import React from 'react';
-import './styles.css'; // Archivo CSS para los estilos
-import { IEspecialista } from '../../mocks/especialistas';
+import './styles.css'; 
+import { IEspecialista } from '../../models';
 
 interface Props {
     especialista: IEspecialista;

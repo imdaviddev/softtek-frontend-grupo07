@@ -59,11 +59,11 @@ const Navbar: React.FC = () => {
                 </div>
 
                 {isLoggedIn ? (
-                    <Button variant="contained" color="secondary" onClick={handleLogout}>
+                    <Button onClick={handleToggleMenuBtn} variant="contained" color="secondary" onClick={handleLogout}>
                         Cerrar Sesión
                     </Button>
                 ) : (
-                    <Button component={NavLink} to={routes.PAGINA_INICIAR_SESION} variant="contained" color="primary">
+                    <Button onClick={handleToggleMenuBtn} component={NavLink} to={routes.PAGINA_INICIAR_SESION} variant="contained" color="primary">
                         Iniciar Sesión
                     </Button>
                 )}

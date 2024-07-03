@@ -8,9 +8,9 @@ import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
 import Grid from '@mui/joy/Grid';
-import CardActions from '@mui/joy/CardActions';
 import * as turnosService from '../../services/turnosService';
 import { IMisTurnosResponse } from '../../models';
+import { FechaTurnoCard } from '..';
 
 const SolicitarTurno = () => {
     const [especialidades, setEspecialidades] = useState<string[]>([]);
@@ -46,25 +46,13 @@ const SolicitarTurno = () => {
             });
     }
 
-    useEffect(() => {
-        getEspecialidades();
-    }, []);
-
-    const onSubmit = data => {
+    const onSubmit = (data: any) => {
         getTurnosDisponiblesPorEspecialidad(data.especialidad); 
     };
 
-    const renderCard = (day : string, specialist: string) => (
-        <Card variant="outlined" sx={{ mt: 2 }} key={`${day}-${specialist}`}>
-            <CardContent>
-                <Typography>{day}</Typography>
-                <Typography>{specialist}</Typography>
-            </CardContent>
-            <CardActions>
-                <Button variant="solid">Solicitar</Button>
-            </CardActions>
-        </Card>
-    );
+    useEffect(() => {
+        getEspecialidades();
+    }, []);
 
     return (
         <>
@@ -90,7 +78,7 @@ const SolicitarTurno = () => {
                                     <Select
                                         {...field}
                                         value={especialidadValue}
-                                        onChange={(event, newValue) => field.onChange(newValue)}
+                                        onChange={(newValue) => field.onChange(newValue)}
                                     >
                                         {especialidades.map((especialidad) => (
                                             <Option key={especialidad} value={especialidad}>
@@ -137,10 +125,8 @@ const SolicitarTurno = () => {
 
             {showTurnosGrid && (
                 <Grid container spacing={2} sx={{ width: '75%', margin: '0 auto', mt: 3 }}>
-                    {turnosDisponibles.map((turno, index) => (
-                        <Grid key={index} xs={12} sm={6}>
-                            {renderCard(turno.fechaHoraCita, turno.especialista.nombre)}
-                        </Grid>
+                    {turnosDisponibles.map((turno) => (
+                        <FechaTurnoCard key={turno.id} day={turno.fechaHoraCita} specialist={turno.especialista.nombre} />
                     ))}
                 </Grid>
             )}
