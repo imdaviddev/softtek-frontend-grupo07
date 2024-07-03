@@ -1,8 +1,9 @@
 // App.tsx
 import React, { useEffect, useState } from 'react';
-import { IEspecialista, getEspecialistas } from '../../mocks/especialistas';
 import { EspecialistaCard } from '../../components'
 import './styles.css'
+import { IEspecialista } from '../../models';
+import { getEspecialistas } from '../../services/especialistaService';
 
 const App: React.FC = () => {
     const [especialistas, setEspecialistas] = useState<IEspecialista[]>([]);
@@ -20,8 +21,8 @@ const App: React.FC = () => {
         <main className="cartilla">
             <h1 className='cartilla-titulo'>Lista de Especialistas</h1>
             <div className="especialistas-list">
-                {especialistas.map((especialista, index) => (
-                    <EspecialistaCard key={index} especialista={especialista} />
+                {especialistas.map((especialista) => (
+                    <EspecialistaCard key={especialista.id} especialista={especialista} />
                 ))}
             </div>
         </main>
