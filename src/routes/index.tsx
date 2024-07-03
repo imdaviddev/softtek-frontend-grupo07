@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Footer, Navbar } from '../ui';
 import Inicio from '../pages/Inicio/Inicio';
 import Turnos from '../pages/Turnos/Turnos';
@@ -11,6 +11,19 @@ import IniciarSesion from '../pages/Usuarios/IniciarSesion';
 import CartillaEspecialistas from '../pages/CartillaEspecialista/CartillaEspecialistas';
 import CrearTurno from '../pages/Turnos/CrearTurno';
 
+
+interface Props{
+  children: React.ReactNode;
+}
+
+const RutaPrivada: React.FC<Props> = ({children}) => {
+  return localStorage.getItem('user') ? children: <Navigate to={PAGINA_INICIAR_SESION} replace/>
+}
+
+const RutaAutenticado: React.FC<Props> = ({children}) => {
+  return localStorage.getItem('user') ? <Navigate to={PAGINA_INICIO} replace/>: children;
+}
+
 const Router = () => {
   return (
     <BrowserRouter>
@@ -20,11 +33,19 @@ const Router = () => {
 
         <Route
           path={PAGINA_TURNOS}
-          element={<Turnos />}
+          element={
+          <RutaPrivada>
+            <Turnos />
+          </RutaPrivada>
+          }
         />
         <Route
           path={PAGINA_INICIAR_SESION}
-          element={<IniciarSesion />}
+          element={
+          <RutaAutenticado>
+            <IniciarSesion />
+          </RutaAutenticado>
+        }
         />
         <Route
           path={PAGINA_CARTILLA_ESPECIALISTAS}
@@ -32,7 +53,11 @@ const Router = () => {
         />
         <Route
           path={PAGINA_SOLICITAR_TURNO}
-          element={<CrearTurno />}
+          element={
+          <RutaPrivada>
+            <CrearTurno />
+          </RutaPrivada>
+        }
         />
         <Route
           path="*"
