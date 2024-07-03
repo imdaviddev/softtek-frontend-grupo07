@@ -2,9 +2,9 @@ import SolicitarTurno from '../../components/turnos/SolicitarTurno';
 
 const CrearTurno = () => {
     return (
-        <div>
+        <main>
             <SolicitarTurno />
-        </div>
+        </main>
     )
 }
 

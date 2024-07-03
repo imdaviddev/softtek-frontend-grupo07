@@ -73,15 +73,16 @@ const SolicitarTurno = () => {
             <Card
                 variant="outlined"
                 sx={{
-                    width: '75%',
+                    width: '90%',
+                    maxWidth:'800px',
                     margin: '0 auto',
                     mt: 5,
                 }}
             >
                 <CardContent>
-                    <Typography>Solicitar turno</Typography>
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <div>
+                    <Typography fontSize={22}>Solicitar turno</Typography>
+                    <form onSubmit={handleSubmit(onSubmit)} style={{gap: "10px", display: "flex", flexDirection: "column"}}>
+                        <div style={{gap: "5px", display: "flex", flexDirection: "column"}}>
                             <Typography>Especialidad requerida</Typography>
                             <Controller
                                 name="especialidad"
@@ -105,7 +106,7 @@ const SolicitarTurno = () => {
                                 <Typography color="danger">{errors.especialidad.message}</Typography>
                             )}
                         </div>
-                        <div>
+                        <div style={{gap: "5px", display: "flex", flexDirection: "column"}}>
                             <Typography>Motivo de consulta</Typography>
                             <Controller
                                 name="motivo"
