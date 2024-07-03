@@ -4,10 +4,16 @@
 
 ## FRONTEND con React + TypeScript + Vite
 
-⛏ Puedes ejecutar la aplicacion desde el root:
+⛏ Deberas instalar las dependencias antes de ejecutar la app:
 
 ```shell script
-./npm start
+npm install
+```
+
+❤ Correr la app
+
+```shell script
+npm start
 ```
 
 Link al Backend:
