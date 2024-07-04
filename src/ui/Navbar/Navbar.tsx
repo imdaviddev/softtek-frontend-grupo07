@@ -59,7 +59,7 @@ const Navbar: React.FC = () => {
                 </div>
 
                 {isLoggedIn ? (
-                    <Button onClick={handleToggleMenuBtn} variant="contained" color="secondary" onClick={handleLogout}>
+                    <Button variant="contained" color="secondary" onClick={handleLogout}>
                         Cerrar Sesión
                     </Button>
                 ) : (
