@@ -41,10 +41,10 @@ const TurnosCardsUser = () => {
         height: 320,
         maxWidth: '100%',
         boxShadow: 'lg',
-        minWidth: 300,
-      }}
+      }      
+    }
     >
-      {!userData && <p>No se pudo cargar el usuario</p>}
+      {!userData && <CardContent sx={{ alignItems: 'center', textAlign: 'center' }}><Typography>No se pudo cargar el usuario</Typography></CardContent>}
       {userData && 
       <>
       <CardContent sx={{ alignItems: 'center', textAlign: 'center' }}>
