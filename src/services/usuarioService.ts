@@ -56,3 +56,21 @@ export async function eliminarTurno(id: number) {
         throw error;
     }
 }
+
+export async function modificarTurno(id: number, datosModificados: any) {
+    const token = obtenerToken();
+    if (!token) {
+        return Promise.reject('No hay token');
+    }
+    try {
+        const response = await axios.put(`${apiUrl}/turnos/${id}`, datosModificados, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error modificando turno:', error);
+        throw error;
+    }
+}

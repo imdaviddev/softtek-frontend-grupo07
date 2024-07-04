@@ -17,9 +17,11 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import emailjs from 'emailjs-com';
 import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom'; // Importar useNavigate
 import { eliminarTurno, getMisTurnos } from "../../services/usuarioService";
 import RecetaModal from "./RecetaModal";
 import { IMisTurnosResponse } from "../../models";
+import { userInfo } from 'os';
 
 const MisTurnosTable = () => {
     const [rows, setRows] = useState<IMisTurnosResponse[]>([]);
@@ -30,6 +32,8 @@ const MisTurnosTable = () => {
 
     const [dialogOpen, setDialogOpen] = useState(false);
     const [selectedTurnoId, setSelectedTurnoId] = useState<number | null>(null);
+
+    const navigate = useNavigate(); // Crear una instancia de useNavigate
 
     const handleCloseModal = () => setModalOpen(false);
     const handleCloseDialog = () => setDialogOpen(false);
@@ -74,10 +78,14 @@ const MisTurnosTable = () => {
         setDialogOpen(true);
     };
 
+    const handleEditarClick = (turnoId: number) => {
+        navigate(`/turnos-modificar/${turnoId}`); // Redirigir a la ruta con el ID del turno
+    };
+
     const sendEmail = async (turno: IMisTurnosResponse) => {
         try {
             const templateParams = {
-                to_email: "prueba@gmail.com", // Correo del usuario
+                to_email: `prueba@gmail.com`, // Correo del usuario
                 subject: `Detalles del Turno N°${turno.id}`,
                 message: `
                     Motivo de Consulta: ${turno.motivoConsulta}
@@ -129,7 +137,7 @@ const MisTurnosTable = () => {
                                 <TableCell>{row.especialista?.nombre}</TableCell>
                                 <TableCell>
                                     <Stack spacing={2} direction="row">
-                                        <Button size="small" variant="outlined" startIcon={<EditIcon />} onClick={function () { }}>
+                                        <Button size="small" variant="outlined" startIcon={<EditIcon />} onClick={() => handleEditarClick(row.id)}>
                                             Editar
                                         </Button>
                                         <Button size="small" variant="outlined" startIcon={<DeleteForeverIcon />} onClick={() => handleEliminarClick(row.id)}>

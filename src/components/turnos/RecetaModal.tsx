@@ -6,6 +6,7 @@ import Modal from '@mui/material/Modal';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import { jsPDF } from 'jspdf';
+import recetaTemplate from '../../assets/RecetaMedicaTemplate.jpg';
 
 const style = {
     position: 'absolute' as const,
@@ -39,8 +40,10 @@ export default function BasicModal({ open, handleClose, title, text }: BasicModa
 
     const handleDownloadPDF = () => {
         const doc = new jsPDF();
-        doc.text(title, 10, 10);
-        doc.text(text, 10, 20);
+        doc.addImage(recetaTemplate, 'JPEG', 0, 0, 210, 297); // Ajustado a tamañ A4: 210x297 mm
+        doc.setFontSize(12);
+        const textLines = doc.splitTextToSize(text, 180);
+        doc.text(textLines, 15, 60);
         doc.save('AlMedin | Receta Medica.pdf');
     };
 
