@@ -38,6 +38,7 @@ const TurnosCardsUser = () => {
   return (
     <Card
       sx={{
+        width: 320,
         height: 320,
         maxWidth: '100%',
         boxShadow: 'lg',
