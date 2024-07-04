@@ -26,54 +26,54 @@ const TurnosCardsUser = () => {
 
   useEffect(() => {
     const fetchUser = () => {
-      try{
+      try {
         setUserData(getCurrentUser());
-      }catch(error){
-      console.error("Hubo un error al cargar la informacion del usuario")
+      } catch (error) {
+        console.error("Hubo un error al cargar la informacion del usuario")
       }
     }
     fetchUser();
-  },[])
+  }, [])
 
   return (
     <Card
       sx={{
         width: 320,
         height: 320,
-        maxWidth: '100%',
+        maxWidth: '87%',
         boxShadow: 'lg',
-      }      
-    }
+      }
+      }
     >
       {!userData && <CardContent sx={{ alignItems: 'center', textAlign: 'center' }}><Typography>No se pudo cargar el usuario</Typography></CardContent>}
-      {userData && 
-      <>
-      <CardContent sx={{ alignItems: 'center', textAlign: 'center' }}>
-        <Avatar src="https://mui.com/static/images/avatar/1.jpg" sx={{ '--Avatar-size': '4rem' }} />
-        <Typography level="title-lg">{userData.nombre}</Typography>
-        <Typography level="body-sm" sx={{ maxWidth: '24ch' }}>
-          DNI: {userData.dni}
-        </Typography>
-        <Typography level="body-sm" sx={{ maxWidth: '24ch' }}>
-          Número celular: {userData.numeroCelular}
-        </Typography>
-        <Typography level="body-sm" sx={{ maxWidth: '24ch' }}>
-          Email: {userData.email}
-        </Typography>
-      </CardContent>
-      <CardOverflow sx={{ bgcolor: 'background.level1' }}>
-        <CardActions buttonFlex="1">
-          <ButtonGroup variant="outlined" sx={{ bgcolor: 'background.surface' }}>
-            <Button onClick={handleCopyData}>Copiar mis datos</Button>
-          </ButtonGroup>
-        </CardActions>
-        {copiedMessage && (
-          <Typography sx={{ textAlign: 'center', color: 'green' }}>
-            {copiedMessage}
-          </Typography>
-        )}
-      </CardOverflow>
-      </>}
+      {userData &&
+        <>
+          <CardContent sx={{ alignItems: 'center', textAlign: 'center' }}>
+            <Avatar src="https://mui.com/static/images/avatar/1.jpg" sx={{ '--Avatar-size': '4rem' }} />
+            <Typography level="title-lg">{userData.nombre}</Typography>
+            <Typography level="body-sm" sx={{ maxWidth: '24ch' }}>
+              DNI: {userData.dni}
+            </Typography>
+            <Typography level="body-sm" sx={{ maxWidth: '24ch' }}>
+              Número celular: {userData.numeroCelular}
+            </Typography>
+            <Typography level="body-sm" sx={{ maxWidth: '24ch' }}>
+              Email: {userData.email}
+            </Typography>
+          </CardContent>
+          <CardOverflow sx={{ bgcolor: 'background.level1' }}>
+            <CardActions buttonFlex="1">
+              <ButtonGroup variant="outlined" sx={{ bgcolor: 'background.surface' }}>
+                <Button onClick={handleCopyData}>Copiar mis datos</Button>
+              </ButtonGroup>
+            </CardActions>
+            {copiedMessage && (
+              <Typography sx={{ textAlign: 'center', color: 'green' }}>
+                {copiedMessage}
+              </Typography>
+            )}
+          </CardOverflow>
+        </>}
     </Card>
   );
 };
