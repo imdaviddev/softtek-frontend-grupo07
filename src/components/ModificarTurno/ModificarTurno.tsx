@@ -31,13 +31,7 @@ const ModificarTurno = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await modificarTurno(turnoId, citaData);
-      console.log('Datos de la cita modificados correctamente:', citaData);
-    } catch (error) {
-      console.error('Error modificando turno:', error);
-    }
+    // falta llamar a la funcion modificarTurno
   };
 
   return (
