@@ -79,7 +79,7 @@ const MisTurnosTable = () => {
     };
 
     const handleEditarClick = (turnoId: number) => {
-        navigate(`/turnos-modificar/${turnoId}`); // Redirigir a la ruta con el ID del turno
+        navigate(`/turnos-modificar/${turnoId}`);
     };
 
     const sendEmail = async (turno: IMisTurnosResponse) => {
