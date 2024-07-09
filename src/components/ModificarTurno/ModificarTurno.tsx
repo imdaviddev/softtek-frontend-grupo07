@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { TextField, Button, Grid, Typography, Container } from '@mui/material';
-import { useParams } from 'react-router-dom'; // Importar useParams
-import { getTurnoById, modificarTurno } from '../../services/usuarioService'; // Ajusta la ruta según sea necesario
+import { Button, Container, Grid, TextField, Typography } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { getTurnoById, modificarTurno } from '../../services/usuarioService';
 
 const ModificarTurno = () => {
-  const { turnoId } = useParams(); // Obtener el turnoId de la URL
+  const { turnoId } = useParams();
   const [citaData, setCitaData] = useState({
     motivoConsulta: '',
     fechaHoraCita: '',
@@ -35,10 +35,8 @@ const ModificarTurno = () => {
     try {
       await modificarTurno(turnoId, citaData);
       console.log('Datos de la cita modificados correctamente:', citaData);
-      // Añade lógica adicional como redirigir a otra página o mostrar un mensaje de éxito
     } catch (error) {
       console.error('Error modificando turno:', error);
-      // Manejo de errores, como mostrar un mensaje al usuario
     }
   };
 

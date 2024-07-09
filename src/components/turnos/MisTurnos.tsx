@@ -17,7 +17,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import emailjs from 'emailjs-com';
 import { useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom'; // Importar useNavigate
+import { useNavigate } from 'react-router-dom';
 import { eliminarTurno, getMisTurnos } from "../../services/usuarioService";
 import RecetaModal from "./RecetaModal";
 import { IMisTurnosResponse } from "../../models";
@@ -33,7 +33,7 @@ const MisTurnosTable = () => {
     const [dialogOpen, setDialogOpen] = useState(false);
     const [selectedTurnoId, setSelectedTurnoId] = useState<number | null>(null);
 
-    const navigate = useNavigate(); // Crear una instancia de useNavigate
+    const navigate = useNavigate();
 
     const handleCloseModal = () => setModalOpen(false);
     const handleCloseDialog = () => setDialogOpen(false);
