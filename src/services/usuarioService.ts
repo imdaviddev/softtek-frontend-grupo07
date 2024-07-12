@@ -75,6 +75,7 @@ export async function modificarTurno(id: number, datosModificados: any) {
     }
 }
 
+
 export async function getTurnoById(id: number) {
     const token = obtenerToken();
     if (!token) {
@@ -89,6 +90,24 @@ export async function getTurnoById(id: number) {
         return response.data;
     } catch (error) {
         console.error('Error fetching turno by id:', error);
+        throw error;
+    }
+}
+
+export async function crearTurno(turnoData: any) {
+    const token = obtenerToken();
+    if (!token) {
+        return Promise.reject('No hay token');
+    }
+    try {
+        const response = await axios.post(`${apiUrl}/turnos`, turnoData, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error creating turno:', error);
         throw error;
     }
 }
