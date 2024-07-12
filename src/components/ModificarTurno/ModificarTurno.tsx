@@ -19,6 +19,7 @@ const ModificarTurno = () => {
         const loadData = async () => {
             try {
                 const data = await getTurnoById(Number(turnoId));
+                data.fechaHoraCita = new Date(data.fechaHoraCita).toLocaleString();
                 setCitaData(data);
             } catch (error) {
                 console.error('Error loading data:', error);
@@ -50,7 +51,11 @@ const ModificarTurno = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await modificarTurno(Number(turnoId), citaData);
+            const formattedData = {
+                ...citaData,
+                fechaHoraCita: new Date(citaData.fechaHoraCita).toISOString(),
+            };
+            await modificarTurno(Number(turnoId), formattedData);
             alert('Turno modificado exitosamente');
             navigate('/turnos');
         } catch (error) {
