@@ -1,7 +1,7 @@
 import { Button, Container, Grid, Select, MenuItem, TextField, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getTurnoById, modificarTurno, crearTurno } from '../../services/usuarioService';
+import { getTurnoById, modificarTurno } from '../../services/usuarioService';
 import { getEspecialistas } from '../../services/especialistaService';
 import { IEspecialista } from '../../models';
 
@@ -14,18 +14,12 @@ const ModificarTurno = () => {
         fechaHoraCita: '',
     });
     const [especialistas, setEspecialistas] = useState<IEspecialista[]>([]);
-    const [isNewTurno, setIsNewTurno] = useState<boolean>(true); // Para determinar si es un nuevo turno o modificación
 
     useEffect(() => {
         const loadData = async () => {
             try {
-                if (turnoId) {
-                    const data = await getTurnoById(Number(turnoId));
-                    setCitaData(data);
-                    setIsNewTurno(false);
-                } else {
-                    setIsNewTurno(true);
-                }
+                const data = await getTurnoById(Number(turnoId));
+                setCitaData(data);
             } catch (error) {
                 console.error('Error loading data:', error);
             }
@@ -56,24 +50,19 @@ const ModificarTurno = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            if (isNewTurno) {
-                await crearTurno(citaData); // Lógica para crear un nuevo turno
-                alert('Turno creado exitosamente');
-            } else {
-                await modificarTurno(Number(turnoId), citaData); // Lógica para modificar un turno existente
-                alert('Turno modificado exitosamente');
-            }
+            await modificarTurno(Number(turnoId), citaData);
+            alert('Turno modificado exitosamente');
             navigate('/turnos');
         } catch (error) {
-            console.error('Error modificando/creando el turno:', error);
-            alert('Error al modificar/crear el turno');
+            console.error('Error modificando el turno:', error);
+            alert('Error al modificar el turno');
         }
     };
 
     return (
         <Container>
             <Typography variant="h4" gutterBottom>
-                {isNewTurno ? 'Crear Nuevo Turno' : 'Modificar Turno'}
+                Modificar Turno
             </Typography>
             <form onSubmit={handleSubmit}>
                 <Grid container spacing={2}>
@@ -117,7 +106,7 @@ const ModificarTurno = () => {
                     </Grid>
                     <Grid item xs={12}>
                         <Button type="submit" variant="contained" color="primary">
-                            {isNewTurno ? 'Crear Turno' : 'Guardar Cambios'}
+                            Guardar Cambios
                         </Button>
                     </Grid>
                 </Grid>
